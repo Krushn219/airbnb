@@ -1,0 +1,14 @@
+---------- Prisma ---------------
+npm i Prisma
+npx prisma init
+
+Model ::
+npx prisma db push
+
+------ auth ------
+https://authjs.dev/reference/adapter/prisma
+
+Google
+google.cloud.console -> new project -> Enabled APIs and Services 
+        1) OAuth consent Screen -> external ...
+        2) credentials -> create credentials -> OAuth client Id
