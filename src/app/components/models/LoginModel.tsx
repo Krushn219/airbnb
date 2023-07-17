@@ -16,9 +16,11 @@ import useLogInModel from "@/app/hooks/useLoginModel";
 import { useRouter } from "next/navigation";
 
 const LoginModel = () => {
-  const router = useRouter();
+  const router = useRouter(); 
+
   const registerModel = useRegisterModel();
-  const loginModel = useLogInModel();
+  const loginModel = useLogInModel(); 
+
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -53,6 +55,11 @@ const LoginModel = () => {
     });
   };
 
+  const toggle = useCallback(()=>{
+    loginModel.onClose()
+    registerModel.onOpen()
+  },[loginModel,registerModel])
+
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading title="Welcome back!" subtitle="Login your account!" />
@@ -83,13 +90,13 @@ const LoginModel = () => {
       <Button outline label="Continue with GitHub" icon={AiFillGithub} onClick={()=>signIn('github')}/>
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="flex flex-row items-center justify-center gap-2">
-          <div>Already have an account?</div>
+          <div>First time using Airbnb?</div>
           <div
-            onClick={registerModel.onClose}
+            onClick={toggle}
             className="text-neutral-800 cursor-pointer 
           hover:underline"
           >
-            Login
+            Create an account
           </div>
         </div>
       </div>

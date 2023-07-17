@@ -12,3 +12,6 @@ Google
 google.cloud.console -> new project -> Enabled APIs and Services 
         1) OAuth consent Screen -> external ...
         2) credentials -> create credentials -> OAuth client Id
+
+=> https://developers.google.com/oauthplayground/
+https://console.cloud.google.com/apis/credentials
