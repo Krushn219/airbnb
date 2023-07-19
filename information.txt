@@ -1,0 +1,46 @@
+FRONTEND ::
+
+ssh -i "koing-dev.pem" ubuntu@15.165.156.115
+ls
+cd bak
+cd app.bak/
+ls
+pm 2 list
+pm stop ID
+git branch
+git status
+git pull
+git fetch --all
+yarn
+yarn build
+yarn start   => (testing)
+pm2 list
+pm2 start ID
+
+BACKEND ::
+
+ssh -i "koing-dev.pem" ubuntu@15.165.156.115
+ls
+cd bak/
+ls
+node -v
+pm2 list
+pm2 stop ID
+git branch
+git status
+git pull
+npm i
+npm run start:dev
+npm run build
+npm run start:dev
+pm2 list
+pm2 start 12
+
+
+
+
+
+df -h
+du -hs
+
+
