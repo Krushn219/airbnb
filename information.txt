@@ -44,3 +44,171 @@ df -h
 du -hs
 
 
+// Digital oceans 
+ssh root@134.209.157.252
+open terminal login with : ssh root@ip_address
+then :cd /var/www/project_name
+
+git clone github_repositories
+
+sudo nano .env
+npm install
+npm run build
+npm install -g pm2
+pm2 save
+pm2 log
+frontend- pm2 serve dist 3005 -- spa / pm2 serve build/ 3000 --name "react-build" -- spa
+backend- pm2 serve index.js 3001 --name "my-backend"
+backend- pm2 serve index.js 3001 –spa
+sudo ufw allow 3001
+pm2 list
+NODE_PORT=3001 pm2 start -i 1 index.js
+sudo nano app.config.json
+{
+apps : [
+{
+name : "your-app",
+script : "npx",
+interpreter: "none",
+args: "serve -p 8443 -T"
+}
+]
+}
+pm2 start app.config.json
+
+for fornt-end
+cd /var/www/i-roomz
+git pull
+npm run build
+pm2 restart 0
+
+for backend
+sudo ufw allow 3001
+cd /var/www/i-Roomz-backend/
+git pull 
+pm2 restart 8
+
+
+nginx setup in droplet 
+https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04
+sudo systemctl status nginx.service
+sudo apt update
+sudo apt install nginx
+
+show file details  : nginx -T
+
+sudo systemctl disable nginx
+sudo systemctl stop nginx
+
+sudo systemctl enable nginx
+sudo systemctl start nginx
+
+delete folder rm -rf 
+delete file : rm 
+
+
+// AWS
+ AWS EC2 live 
+create  bucket
+
+create aws account 
+open aws and click Service
+open Service and click EC2
+open EC2 and click Instances(running)
+open Instances(running) and click Launch Instances
+
+create EC2 Instances
+open Launch Instances 
+1. add name and tags
+2. Application and OS Images (Amazon Machine Image) click ubuntu
+3. Instance type (default - t2 micro  free tier eligible)
+4. Key pair (login) genrate key pair (create new key pair)
+  - click create new key pair and add name and save file
+5. click all checkout box
+6. click Launch Instances button -done
+
+7. click view all Launch Instances
+8. open view all Launch Instances and click your instances and running state
+9. and open security and click security groups link
+10. open link and click edit inbound rules and add rule
+- open rule and edit port (1234)and source (Anywhere ipv4)
+- open rule and edit port (3000)and source (Anywhere ipv4) -save
+back  home Instances
+11. open Instances and click connect button
+12. open connect page click connect button and open terminal
+
+setup machine
+update os 
+1. sudo apt-get update-y
+install node version manager(nvm)
+2. curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+activate nvm
+3. .~/.nvm/nvm.sh
+install node
+4. nvm install –lts
+
+fix Ip add.
+open network & security and click Elastic ips
+open Elastic ips and click allocate Elastic ip address
+open and click  allocate button
+click right corner associate this Elastic ip address
+open new tab and choose instance (your instance) click  associate button
+and genrate ip -set frontend public id
+http://ip-add(fix ip):port(set port)/
+
+open Service and click s3 storage
+
+
+
+
+create bucket on  s3 and upload zip on it
+create aws account 
+open aws and click Service
+open Service and click s3 
+open s3 and click create bucket
+open tab and add name(uniqe)-save
+click upload button and upload frontend & backend zip file
+
+create IAM user role for s3 connection with EC2
+open aws and click Service
+open Service and click Identity and Access Management (IAM)
+open left panel Access management and click roles
+open tab and click create role button
+chosse Ec2 and choose option s3 click next
+open add permission and click AmazonS3FullAccess click next
+add role name and create role
+
+update role  in action for Ec2
+open  Instance and click actions > security>modify IAM role 
+chosse your role and click update IAM role
+
+install AWS CLI
+sudo apt install awscli
+aws –version
+
+check bucket
+aws s3 ls
+
+to copy and paste in from s3 to Ec2 current directory
+aws s3 cp s3://bucket-name/for fornt-end zip filename
+aws s3 cp s3://bucket-name/for back-end zip filename
+ls
+
+install unzip
+sudo apt-get install -y unzip
+unzip for fornt-end zip filename
+unzip for back-end zip filename
+
+for fornt-end
+cd / fornt-end >ls
+npm install > npm install -g pm2 >npm install -g serve
+npm run build
+pm2 serve build port(3000) –spa 
+
+for backend
+cd /back-end
+ls
+npm install
+npm install -g pm2
+pm2 start index.js
+
